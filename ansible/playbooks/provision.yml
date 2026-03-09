@@ -1,0 +1,17 @@
+---
+- name: Provision web servers
+  hosts: webservers
+  become: true
+  vars_files:
+    - "../group_vars/all.yml"
+
+  roles:
+    - role: common
+      tags:
+        - common
+        - packages
+    - role: docker
+      tags:
+        - docker
+        - docker_install
+        - docker_config
